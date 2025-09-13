@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI 개발자 — 샘플 포트폴리오</title>
+    <meta name="description" content="Java/C++ 중심 AI 개발자 샘플 포트폴리오 페이지 (HTML + CSS 단일 파일)" />
+    <style>
+        :root {
+            --bg: #0b0f14;
+            --panel: #111827;
+            --panel-2: #0f172a;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --brand: #60a5fa;
+            --brand-2: #22d3ee;
+            --accent: #34d399;
+            --danger: #f87171;
+            --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+            --radius: 16px;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #f4f6fb;
+                --panel: #ffffff;
+                --panel-2: #eef2ff;
+                --text: #0f172a;
+                --muted: #475569;
+                --brand: #2563eb;
+                --brand-2: #06b6d4;
+                --accent: #059669;
+                --danger: #dc2626;
+                --shadow: 0 6px 24px rgba(0, 0, 0, .12);
+            }
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Apple SD Gothic Neo, Noto Sans KR, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            color: var(--text);
+            background: linear-gradient(160deg, var(--bg) 0%, #0a0e13 100%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            border-radius: 12px
+        }
+
+        code,
+        kbd,
+        pre {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+        }
+
+        /* Layout */
+        .container {
+            width: min(1100px, 92%);
+            margin-inline: auto
+        }
+
+        header.site {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: saturate(150%) blur(8px);
+            background: color-mix(in oklab, var(--panel) 85%, transparent);
+            border-bottom: 1px solid color-mix(in oklab, var(--panel), #000 35%)
+        }
+
+        header .wrap {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 14px 0
+        }
+
+        nav ul {
+            display: flex;
+            gap: 18px;
+            list-style: none;
+            margin: 0;
+            padding: 0
+        }
+
+        nav a {
+            padding: 8px 12px;
+            border-radius: 10px
+        }
+
+        nav a:hover {
+            background: color-mix(in oklab, var(--panel-2), #000 10%)
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700
+        }
+
+        .badge {
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--brand), var(--brand-2));
+            color: #fff
+        }
+
+        /* Hero */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 28px;
+            align-items: center;
+            padding: 56px 0
+        }
+
+        .hero-card {
+            background: linear-gradient(160deg, color-mix(in oklab, var(--panel), #fff 4%), color-mix(in oklab, var(--panel-2), #000 2%));
+            border: 1px solid color-mix(in oklab, var(--panel), #000 35%);
+            padding: 28px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow)
+        }
+
+        .hero h1 {
+            font-size: clamp(28px, 4vw, 44px);
+            line-height: 1.15;
+            margin: 0
+        }
+
+        .hero p {
+            color: var(--muted);
+            margin-top: 10px
+        }
+
+        .hero .actions {
+            margin-top: 24px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid color-mix(in oklab, var(--panel-2), #000 25%);
+            background: var(--panel-2);
+            cursor: pointer;
+            transition: transform .08s ease, background .2s
+        }
+
+        .btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .btn.primary {
+            background: linear-gradient(135deg, var(--brand), var(--brand-2));
+            color: white;
+            border-color: transparent
+        }
+
+        .btn.ghost {
+            background: transparent
+        }
+
+        .hero-visual {
+            position: relative
+        }
+
+        .glow {
+            position: absolute;
+            inset: auto -10% -10% -10%;
+            height: 180px;
+            background: radial-gradient(120px 80px at 25% 60%, color-mix(in oklab, var(--brand), #fff 10%), transparent 60%), radial-gradient(140px 100px at 75% 30%, color-mix(in oklab, var(--accent), #fff 12%), transparent 60%);
+            filter: blur(40px);
+            opacity: .45
+        }
+
+        .stack-card {
+            position: relative;
+            background: var(--panel);
+            border: 1px solid color-mix(in oklab, var(--panel), #000 35%);
+            padding: 18px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow)
+        }
+
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px
+        }
+
+        .chip {
+            padding: 8px 10px;
+            border-radius: 999px;
+            background: color-mix(in oklab, var(--panel-2), #000 15%);
+            border: 1px dashed color-mix(in oklab, var(--panel), #000 35%);
+            font-size: 14px
+        }
+
+        /* Sections */
+        section {
+            padding: 40px 0
+        }
+
+        h2.section-title {
+            font-size: 24px;
+            margin: 0 0 18px 0
+        }
+
+        .grid {
+            display: grid;
+            gap: 18px
+        }
+
+        .grid.cols-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr))
+        }
+
+        .grid.cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr))
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr
+            }
+
+            .grid.cols-3 {
+                grid-template-columns: 1fr
+            }
+
+            .grid.cols-2 {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid color-mix(in oklab, var(--panel), #000 35%);
+            border-radius: var(--radius);
+            padding: 18px;
+            box-shadow: var(--shadow)
+        }
+
+        .card h3 {
+            margin-top: 0
+        }
+
+        .meta {
+            color: var(--muted);
+            font-size: 14px
+        }
+
+        /* Code block */
+        pre {
+            margin: 0;
+            background: #0a0f17;
+            border: 1px solid #101826;
+            border-radius: 12px;
+            padding: 14px;
+            overflow: auto
+        }
+
+        pre code {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #e6edf3
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 12px;
+            overflow: hidden
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border-bottom: 1px solid color-mix(in oklab, var(--panel), #000 35%)
+        }
+
+        th {
+            text-align: left;
+            background: color-mix(in oklab, var(--panel-2), #000 10%)
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px
+        }
+
+        @media (max-width:700px) {
+            .gallery {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        /* Aside */
+        aside.tip {
+            border-left: 4px solid var(--brand);
+            padding: 14px;
+            background: color-mix(in oklab, var(--panel), #000 10%);
+            border-radius: 12px
+        }
+
+        /* Contact */
+        form {
+            display: grid;
+            gap: 12px
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid color-mix(in oklab, var(--panel), #000 35%);
+            background: color-mix(in oklab, var(--panel-2), #000 10%);
+            color: var(--text)
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: 2px solid color-mix(in oklab, var(--brand), #fff 10%)
+        }
+
+        label {
+            font-size: 14px;
+            color: var(--muted)
+        }
+
+        /* Footer */
+        footer {
+            padding: 24px 0;
+            color: var(--muted);
+            border-top: 1px solid color-mix(in oklab, var(--panel), #000 40%)
+        }
+
+        .socials {
+            display: flex;
+            gap: 12px
+        }
+
+        /* Little utilities */
+        .row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap
+        }
+
+        .justify-between {
+            justify-content: space-between
+        }
+
+        .caps {
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            font-size: 12px
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 999px;
+            background: color-mix(in oklab, var(--panel-2), #000 10%);
+            border: 1px solid color-mix(in oklab, var(--panel), #000 35%)
+        }
+
+        .note {
+            color: var(--muted);
+            font-size: 13px
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header / Nav -->
+    <header class="site">
+        <div class="container wrap">
+            <div class="brand">🤖 <span>AI Developer</span> <span class="badge caps">Sample</span></div>
+            <nav aria-label="Main Navigation" style="margin-left:auto">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="form1.html">Style 1 페이지</a></li>
+                    <li><a href="form1_css.html">Style 2 페이지</a></li>
+                    <li><a href="form1_js.html">Example 페이지</a></li>
+                    <li><a href="form1_practice.html">Form 1 Practice 페이지</a></li>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero container" aria-label="Intro">
+        <div class="hero-card">
+            <p class="caps pill" aria-label="status">Open to intern · Fall 2025</p>
+            <h1>안녕하세요, <mark>Java / C++</mark> 기반의 <abbr title="Artificial Intelligence">AI</abbr> 개발자 샘플 페이지입니다.</h1>
+            <p>
+                대규모 데이터 처리, 모델 서빙, 시스템 최적화에 관심이 있어요. <strong>성능</strong>과 <strong>가독성</strong>을 동시에 잡는 코드를 지향합니다.
+                아래에서 언어별 코드 스타일, 프로젝트, 기술 스택을 확인할 수 있어요.
+            </p>
+            <div class="actions">
+                <a class="btn primary" href="#projects">🚀 프로젝트 보기</a>
+                <a class="btn" href="#skills">🧰 기술 스택</a>
+                <a class="btn ghost" href="#contact">✉️ 연락하기</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="stack-card">
+                <h3 style="margin:0 0 10px 0">주요 스택</h3>
+                <div class="stack-grid">
+                    <span class="chip">Java 21</span>
+                    <span class="chip">C++20</span>
+                    <span class="chip">Spring Boot</span>
+                    <span class="chip">gRPC</span>
+                    <span class="chip">CUDA</span>
+                    <span class="chip">PyTorch JNI</span>
+                    <span class="chip">Docker</span>
+                    <span class="chip">Kubernetes</span>
+                </div>
+            </div>
+            <div class="glow" aria-hidden="true"></div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="container">
+        <h2 class="section-title">About</h2>
+        <div class="grid cols-2">
+            <article class="card">
+                <h3>👋 소개</h3>
+                <p>
+                    <time datetime="2023-09">2023</time>년부터 머신러닝 엔지니어링과 시스템 프로그래밍을 병행하며,
+                    대화형 에이전트와 모델 추론 서버를 주로 개발했습니다.
+                    <em>클린 아키텍처</em>와 <em>테스트 우선</em>을 선호합니다.
+                </p>
+                <blockquote cite="https://martinfowler.com/">
+                    “Any fool can write code that a computer can understand. Good programmers write code that humans can
+                    understand.”
+                </blockquote>
+                <details>
+                    <summary>더 보기</summary>
+                    <p class="note">알고리즘: 그래프 탐색, DP, 힙/세그먼트 트리 · 시스템: epoll, lock-free 구조 · 분산: Kafka, Redis, NATS</p>
+                </details>
+            </article>
+            <aside class="card">
+                <h3>🗂️ 하이라이트</h3>
+                <ul>
+                    <li>모델 지연시간 <strong>35% 감소</strong> (C++ 추론 엔진 최적화)</li>
+                    <li>Java 기반 RAG API, 초당 <strong>2k QPS</strong> 처리</li>
+                    <li>온디바이스 NLP 경량화(<code>INT8</code> quant)</li>
+                </ul>
+                <aside class="tip" role="note">💡 TIP: README에 <kbd>Usage</kbd>, <kbd>Benchmarks</kbd>,
+                    <kbd>Design</kbd> 섹션을 꼭 넣자.
+                </aside>
+            </aside>
+        </div>
+    </section>
+
+    <!-- Skills with code samples -->
+    <section id="skills" class="container">
+        <h2 class="section-title">Skills · Java / C++</h2>
+        <div class="grid cols-2">
+            <article class="card">
+                <h3>☕ Java 예시 — 간단한 스레드 풀</h3>
+                <p class="meta">주요 태그: <code>&lt;pre&gt;</code>, <code>&lt;code&gt;</code>, <code>&lt;mark&gt;</code>
+                </p>
+                <pre aria-label="Java code"><code>// Java 21 Virtual Threads 예시
+import java.util.concurrent.*;
+
+public class MiniExecutor {
+  private final ExecutorService ex = Executors.newVirtualThreadPerTaskExecutor();
+  public &lt;T&gt; Future&lt;T&gt; submit(Callable&lt;T&gt; task){
+    return ex.submit(task);
+  }
+  public void close(){ ex.shutdown(); }
+  public static void main(String[] args) throws Exception {
+    var pool = new MiniExecutor();
+    var f = pool.submit(() -&gt; "Hello, AI" );
+    System.out.println("Result: " + f.get());
+    pool.close();
+  }
+}
+</code></pre>
+            </article>
+            <article class="card">
+                <h3>🧩 C++ 예시 — 고정 버퍼 RingQueue</h3>
+                <p class="meta">주요 태그: <code>&lt;pre&gt;</code>, <code>&lt;code&gt;</code>, <code>&lt;abbr&gt;</code>
+                </p>
+                <pre aria-label="C++ code"><code>// C++20 lock-free-ish ring buffer (단순화)
+#include &lt;array&gt;
+#include &lt;optional&gt;
+
+template &lt;typename T, std::size_t N&gt;
+class RingQueue {
+  std::array&lt;T,N&gt; buf{}; size_t h=0,t=0; bool full=false;
+public:
+  bool push(const T&amp; x){ if(full) return false; buf[t]=x; t=(t+1)%N; full=(t==h); return true; }
+  std::optional&lt;T&gt; pop(){ if(empty()) return std::nullopt; auto v=buf[h]; h=(h+1)%N; full=false; return v; }
+  bool empty() const { return (!full &amp;&amp; h==t); }
+};
+</code></pre>
+            </article>
+        </div>
+
+        <div class="card" style="margin-top:18px">
+            <h3>기술 요약</h3>
+            <table aria-label="Skill matrix">
+                <thead>
+                    <tr>
+                        <th>카테고리</th>
+                        <th>기술</th>
+                        <th>숙련도</th>
+                        <th>비고</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>언어</td>
+                        <td>Java, C++, Python</td>
+                        <td><meter min="0" max="100" value="85">85%</meter></td>
+                        <td>백엔드/시스템</td>
+                    </tr>
+                    <tr>
+                        <td>프레임워크</td>
+                        <td>Spring, gRPC, CUDA</td>
+                        <td><meter min="0" max="100" value="80">80%</meter></td>
+                        <td>고성능 지향</td>
+                    </tr>
+                    <tr>
+                        <td>인프라</td>
+                        <td>Docker, K8s</td>
+                        <td><meter min="0" max="100" value="70">70%</meter></td>
+                        <td>IaC 선호</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="note">※ <abbr title="Kubernetes">K8s</abbr> = 컨테이너 오케스트레이션</p>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="grid cols-3">
+            <article class="card">
+                <figure>
+                    <img src="https://picsum.photos/seed/ai1/800/500" alt="모델 서빙 대시보드" />
+                    <figcaption class="note">모델 서빙 대시보드</figcaption>
+                </figure>
+                <h3>RAG API Server</h3>
+                <p>Spring + gRPC로 구축한 경량 RAG API. 캐시 전략과 스트리밍으로 저지연 응답 제공.</p>
+                <ul>
+                    <li>스루풋: 2k QPS</li>
+                    <li>p99 지연: 120ms</li>
+                    <li>자동 스케일링</li>
+                </ul>
+                <a class="btn" href="#">🔗 깃허브</a>
+            </article>
+            <article class="card">
+                <figure>
+                    <img src="https://picsum.photos/seed/ai2/800/500" alt="C++ 추론 엔진 결과" />
+                    <figcaption class="note">C++ 추론 엔진</figcaption>
+                </figure>
+                <h3>TensorRT Wrapper</h3>
+                <p>C++20로 작성한 추론 엔진 래퍼. 배치 동적 조정과 메모리 풀을 제공.</p>
+                <ol>
+                    <li>CUDA Stream 튜닝</li>
+                    <li>Zero-copy I/O</li>
+                    <li>NUMA-aware allocator</li>
+                </ol>
+                <a class="btn" href="#">📦 패키지 문서</a>
+            </article>
+            <article class="card">
+                <figure>
+                    <img src="https://picsum.photos/seed/ai3/800/500" alt="분산 로그 파이프라인" />
+                    <figcaption class="note">분산 로그 파이프라인</figcaption>
+                </figure>
+                <h3>Realtime Metrics</h3>
+                <p>Kafka + Flink 기반 실시간 지표 수집/알림 시스템. 규칙 기반 알림과 대시보드 제공.</p>
+                <dl>
+                    <dt>지표</dt>
+                    <dd>CPU, 메모리, GPU</dd>
+                    <dt>알림</dt>
+                    <dd>Slack, PagerDuty</dd>
+                </dl>
+                <a class="btn" href="#">📊 라이브 데모</a>
+            </article>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="container">
+        <h2 class="section-title">Gallery</h2>
+        <div class="gallery" aria-label="Image gallery using &lt;figure&gt; &amp; &lt;figcaption&gt;">
+            <figure>
+                <img src="https://picsum.photos/seed/code1/600/400" alt="코드 스니펫 이미지" />
+                <figcaption class="note">코드 집중</figcaption>
+            </figure>
+            <figure>
+                <img src="https://picsum.photos/seed/code2/600/400" alt="서버 랙 이미지" />
+                <figcaption class="note">서버 랙</figcaption>
+            </figure>
+            <figure>
+                <img src="https://picsum.photos/seed/code3/600/400" alt="화이트보드 설계" />
+                <figcaption class="note">화이트보드 설계</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="container">
+        <h2 class="section-title">Contact</h2>
+        <div class="grid cols-2">
+            <form class="card" onsubmit="event.preventDefault(); alert('메시지가 전송된 것으로 가정합니다 🙂');">
+                <div>
+                    <label for="name">이름</label>
+                    <input id="name" name="name" placeholder="홍길동" required />
+                </div>
+                <div class="row">
+                    <div style="flex:1">
+                        <label for="email">이메일</label>
+                        <input id="email" name="email" type="email" placeholder="you@example.com" required />
+                    </div>
+                    <div style="width:180px">
+                        <label for="role">관심 분야</label>
+                        <select id="role" name="role">
+                            <option>백엔드</option>
+                            <option>시스템</option>
+                            <option>ML 엔지니어</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label for="msg">메시지</label>
+                    <textarea id="msg" name="msg" rows="5" placeholder="프로젝트 협업 제안 내용을 적어주세요"></textarea>
+                </div>
+                <div class="row justify-between">
+                    <span class="note">스팸 방지 레벨: <progress value="0.4">40%</progress></span>
+                    <button class="btn primary" type="submit">보내기</button>
+                </div>
+            </form>
+            <div class="card">
+                <h3>연락처 & 소셜</h3>
+                <p class="note">빠른 답장을 원하면 이메일을 추천해요.</p>
+                <ul>
+                    <li>📧 email@example.com</li>
+                    <li>🐙 github.com/yourname</li>
+                    <li>💼 linkedin.com/in/yourname</li>
+                </ul>
+                <p class="note">위 링크들은 샘플이니 본인 정보로 변경하세요.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container row justify-between">
+            <span>© <time id="year"></time> AI Developer Sample. All rights reserved.</span>
+            <div class="socials">
+                <a class="pill" href="#">Twitter</a>
+                <a class="pill" href="#">GitHub</a>
+                <a class="pill" href="#">Blog</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
