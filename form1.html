@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <h1>Checkout form</h1>
+    <p>Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation
+        state that can be triggered by attempting to submit the form without completing it.
+    </p>
+    <div class="right">
+        <h2>Billing address</h2>
+        <form>
+            <label for="firstname">First name</label>
+            <input type="text" id="firstname"><br>
+            <label for="lastname">Last name</label>
+            <input type="text" id="lastname"><br>
+            <br>
+
+            <label for="username">Username</label>
+            <span>@</span>
+            <input type="text" id="username" placeholder="Username"><br><br>
+
+            <label for="email">Email (Optional) </label>
+            <input type="email" id="email" placeholder="you@example.com"><br><br>
+
+            <label for="address">Address</label>
+            <textarea id="address" placeholder="1234 Main St"></textarea><br><br>
+
+            <label for="address2">Address 2 (Optional)</label>
+            <textarea id="address" placeholder="Apartment or suite"></textarea><br><br>
+
+            <label for="birthdate">Birthdate</label>
+            <input type="date" id="birthdate"><br><br>
+
+            <label for="contry">Country</label>
+            <select name="country">
+                <option>Choose...</option>
+                <option value="US">United States</option>
+            </select>
+
+            <label for="state">State</label>
+            <select name="state">
+                <option>Choose...</option>
+                <option value="california">California</option>
+            </select>
+            <label for="zip">Zip</label>
+            <input type="text" id="zip"><br><br>
+
+            <input type="checkbox" id="info1">
+            <label for="info1">Shipping address is the same as my billing address</label><br>
+            <input type="checkbox" id="info2">
+            <label for="info2">Save this information for next time</label><br><br>
+
+            <h3>Payment</h3>
+            <input type="radio" id="credit card" name="payment">
+            <label for="credit card">Credit card</label><br>
+            <input type="radio" id="debit card" name="payment">
+            <label for="debit card">Debit card</label><br>
+            <input type="radio" id="paypal" name="payment">
+            <label for="paypal">PayPal</label><br>
+            <br>
+
+            <label for="nameoncard">Name on card</label>
+            <input type="text" id="nameoncard"><br>
+            <small>Full name as displayed on card</small><br><br>
+            <label for="creditcardnumber">Credit card number</label>
+            <input type="text" id="creditcardnumber"><br><br>
+
+            <label for="expiration">Expiration</label>
+            <input type="text" id="expiration"><br>
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv"><br><br>
+
+            <input type="submit" value="Continue to checkout">
+
+        </form>
+
+        <h4>Your cart</h4>
+        <ul class="products">
+            <li>
+                <div>
+                    <h6>Product name</h6>
+                    <small>Brief description</small>
+                </div>
+                <span>%12</span>
+            </li>
+            <li>
+                <div>
+                    <h6>Second product</h6>
+                    <small>Brief description</small>
+                </div>
+                <span>%8</span>
+            </li>
+            <li>
+                <div>
+                    <h6>Third item</h6>
+                    <small>Brief description</small>
+                </div>
+                <span>%5</span>
+            </li>
+            <li>
+                <div>
+                    <h6>Promo code</h6>
+                    <small>EXAMPLECODE</small>
+                </div>
+                <span>-%5</span>
+            </li>
+            <li>
+                <div>
+                    <h6>Total (USD)</h6>
+                </div>
+                <span>%20</span>
+            </li>
+        </ul>
+        <div>
+            <input type="text" placeholder="Promo code">
+            <button type="submit">Redeem</button>
+        </div>
+
+    </div>
+
+</body>
+
+
+</html>

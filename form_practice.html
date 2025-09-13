@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Form 연습</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+
+        form {
+            width: 400px;
+            padding: 20px;
+            border: 2px solid #2196f3;
+            border-radius: 10px;
+            background-color: #e0f7fa;
+            /* (1) 하늘색 */
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea,
+        button {
+            width: 100%;
+            margin-top: 5px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        /* (2) 라디오 버튼 꾸미기 */
+        input[type="radio"] {
+            width: auto;
+            accent-color: #2196f3;
+            /* 브라우저 기본 스타일 대체 */
+            cursor: pointer;
+        }
+
+        input[type="radio"]:hover {
+            outline: 2px solid #1976d2;
+            border-radius: 50%;
+        }
+
+        /* (3) 체크박스 가로 정렬 */
+        .checkbox-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        input[type="checkbox"] {
+            width: auto;
+            accent-color: #2196f3;
+            cursor: pointer;
+        }
+
+        button {
+            background-color: #2196f3;
+            /* 파란색 */
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #1976d2;
+            /* hover 시 진한 파랑 */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>회원가입 Form</h2>
+    <form>
+        <!-- (5) 아이디: 필수 입력 -->
+        <label for="username">아이디:</label>
+        <input type="text" id="username" name="username" placeholder="아이디 입력" required>
+
+        <!-- (5) 비밀번호: 필수 입력 + 8자 이상 -->
+        <label for="password">비밀번호:</label>
+        <input type="password" id="password" name="password" required minlength="8" placeholder="비밀번호 (8자 이상)">
+
+        <!-- (2) 라디오 버튼 -->
+        <label>성별:</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">남성</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">여성</label>
+
+        <!-- (3) 체크박스 가로 정렬 -->
+        <label>관심분야:</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="interest" value="AI"> AI</label>
+            <label><input type="checkbox" name="interest" value="Web"> 웹 개발</label>
+            <label><input type="checkbox" name="interest" value="Game"> 게임 개발</label>
+        </div>
+
+        <!-- (4) 드롭다운 기본값: 개발자 -->
+        <label for="job">직업:</label>
+        <select id="job" name="job">
+            <option value="student">학생</option>
+            <option value="developer" selected>개발자</option>
+            <option value="designer">디자이너</option>
+        </select>
+
+        <!-- 자기소개 -->
+        <label for="bio">자기소개:</label>
+        <textarea id="bio" name="bio" rows="4" placeholder="간단한 소개를 작성하세요"></textarea>
+
+        <!-- 버튼 -->
+        <button type="submit">회원가입</button>
+    </form>
+
+</body>
+
+</html>
